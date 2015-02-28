@@ -1,0 +1,68 @@
+GET /ap_dataset/document/_search
+{
+  "query": {
+    "match_all": {
+      "text": "prime"
+    }
+  },
+  "_source": "docno", 
+  "facets": {
+    "doc_len": {
+      "statistical": {
+        "script": "doc['text'].values.size()"
+      }
+    },
+    "ttf": {
+      "statistical": {
+        "script": "_index['text']['prime'].ttf()"
+      }
+    },
+    "df": {
+      "statistical": {
+        "script": "_index['text']['prime'].df()"
+      }
+    },
+    "tf": {
+      "statistical": {
+        "script": "_index['text']['prime'].tf()"
+      }
+    }
+  }
+}
+
+GET /ap_dataset/document/_search
+{
+  "query": {
+    "function_score": {
+      "query": {
+        "match": {
+          "text": "prime"
+        }
+      },
+      "boost_mode":"replace",
+      "functions": [
+        {
+          "script_score": {
+            "script": "_index['text']['prime'].tf()"
+          }
+        }
+      ]
+    }
+  },
+  "_source": "docno",
+  "size": 10,
+  "facets": {
+    "ttf": {
+      "statistical": {
+        "script": "_index['text']['prime'].ttf()"
+      }
+    },
+    "df": {
+      "statistical": {
+        "script": "_index['text']['prime'].df()"
+      }
+    }
+  }
+}
+
+GET /ap_dataset/document/36844/_termvector
