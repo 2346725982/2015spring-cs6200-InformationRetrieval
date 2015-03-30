@@ -1,9 +1,14 @@
 import time
 import re
 import requests
+import time
+import sys
 from bs4 import BeautifulSoup
 from urlparse import urlparse
 from urlparse import urljoin
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 SEED_PATH = '/Users/Ken/Documents/2015spring-cs6200-InformationRetrieval/assignment_3/'
 FOLDER_PATH = '/Users/Ken/Desktop/crawl/'
@@ -43,12 +48,12 @@ class url:
 
         ## get cleanedText
         for each in soup.find_all('p'):
-            self.cleanedText.append(each.get_text().encode('utf-8'))
+            self.cleanedText.append(each.get_text())
 
         ## get outlinks
         for link in soup.find_all('a'):
             if link.has_attr('href'):
-                self.outlinks.add(self.canonicalize(link['href']).encode('utf-8'))
+                self.outlinks.add(self.canonicalize(link['href']))
 
     def canonicalize(self, outlink):
         ## point to itself
@@ -127,7 +132,8 @@ def main():
         frontier = f.read().split()
 
     ## BFS
-    while frontier and total < 3:
+    start = time.time()
+    while frontier and total < 30000:
         curr = frontier.pop()
         u = url(curr)
 
@@ -144,6 +150,15 @@ def main():
             #print 'frontier', '\n'.join(frontier)
             #print 'visited', '\n'.join(visited)
 
+            if total == 12000:
+                with open(FOLDER_PATH + 'inlinks12000', 'w') as f:
+                    for each in inlinks:
+                        f.write(each)
+                        f.write('    ')
+                        f.write(';'.join(inlinks[each]))
+                        f.write('\n')
+    end = time.time()
+
     with open(FOLDER_PATH + 'inlinks', 'w') as f:
         for each in inlinks:
             f.write(each)
@@ -151,6 +166,7 @@ def main():
             f.write(';'.join(inlinks[each]))
             f.write('\n')
 
+    print int(end - start)
     print "done."
 
 if __name__ == '__main__' :
