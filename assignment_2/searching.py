@@ -9,7 +9,7 @@ from stemming.porter2 import stem
 
 COURSE_PATH = "/Users/Ken/Desktop/6200/"
 QUERY_PATH = COURSE_PATH + "AP_DATA/query_desc.51-100.short.txt"
-RESULT_PATH = COURSE_PATH + "assignment_2/result/laplace.txt"
+RESULT_PATH = COURSE_PATH + "assignment_2/result/lm.txt"
 INDEX_PATH = COURSE_PATH + "assignment_2/Index2/"
 
 meaningless_word = set(["Document", "will", "or", "a", "of", "the", "on", "something", "by", "about", "with", "as", "to", "over", "either", "which", "in", "how", "and", "one", "discuss", "report", "include", "some", "an", "any", "has", "at", "must", "being", "against", "into", "its", "used", "certain", "US", "even", "other", "been", "doing", "since", "use", "both"])
@@ -94,18 +94,24 @@ def _query() :
                 #tmp2 = (tf + 1.2 * tf) / (tf + 1.2 * ((1 - 0.75) + 0.75 * (doc_len[doc] / 245)))
                 #tmp3 = (tfq + 100 * tfq) / (tfq + 100)
                 #score = tmp1 * tmp2 * tmp3
+
                 #if doc not in score_dict :
                 #    score_dict[doc] = 0 
 
                 #laplace
-                score = math.log((tf + 1) / (doc_len[doc] + 153130)) - math.log(1 / (doc_len[doc] + 153130))
+                #score = math.log((tf + 1) / (doc_len[doc] + 153130)) - math.log(1 / (doc_len[doc] + 153130))
+
+                #LM_JM
+                tmp1 = 0.9 * float(tf) / doc_len[doc]
+                tmp2 = 0.1 * float(20983991 - tf) / (13950891 - doc_len[doc])
+                score = tmp1 + tmp2
 
                 score_dict[doc] += score
 
         sorted_dic = sorted(score_dict.items(), key=operator.itemgetter(1), reverse = True)
-        for i in range(len(sorted_dic)) :#range(min(len(sorted_dic), 1001)):
+        for i in range(min(len(sorted_dic), 1000)):
             buf = str(words[0]) + " Q0 " + sorted_dic[i][0] + " " 
-            buf += str(i) + " " + str(sorted_dic[i][1]) + " Exp\n"
+            buf += str(i+1) + " " + str(sorted_dic[i][1]) + " Exp\n"
             result.write(buf)
 
     result.close()

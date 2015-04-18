@@ -1,0 +1,8 @@
+€}q(Uranked_list]qUmainqaUpagerank_v3]q(UtmpqUconvertqUpageidqUlinksqUfUiUlUNUdoneq	Uresultq
+Usorted_xqUnewqUoldqUlineqUgenerateNewqUoutlinksqeU	searching]q(URESULT_PATHqU
+QUERY_PATHqU
+INDEX_PATHqUCOURSE_PATHqUavg_lenqUmeaningless_wordqUv_sizeqUtotal_docnumqeUdatetime]q(U	timedeltaqUMAXYEARqUdateqUdatetime_CAPIqUtzinfoqUtimeq UMINYEARq!Udatetimeq"eUmerge]q#(Udocidq$UfUiUjUdicq%Uscoreq&Uasseserq'UwUqueryq(UPATHq)heUpagerank]q*(UtransposeLinkMatrixq+hhhUfUincomingLinksq,UpageRankq-UpageRankGeneratorq.h
+U	leafNodesq/Upageid2q0UnumLinksq1hUrowq2eUpagerank_v2]q3(UAhhUGUfUedgeq4h-heUquery]q5(UOkapi_TF_Modelq6Uget_tfq7Uget_avg_lenq8UTF_IDF_Modelq9Uupdate_scoreq:Uesq;Uwrite_resultq<Uget_lenq=UUnigram_LM_JMq>U
+query_bodyq?hUUnigram_LM_Laplaceq@Uline_processqAU
+Okapi_BM25qBUOkapi_TFqCU	sortedDicqDUOkapi_BM25_ModelqEUfacets_bodyqFU"Unigram_LM_Laplace_smoothing_ModelqGUget_dfqHhUUnigram_LM_JM_smoothing_ModelqIeUshutil]qJ(UcopyfileqKUignore_patternsqLUcopytreeqMUget_archive_formatsqNUcopyfileobjqOUregister_archive_formatqPUcopymodeqQUmake_archiveqRUmoveqSUunregister_archive_formatqTUrmtreeqUUErrorqVUcopyqWU	ExecErrorqXUcopy2qYUSpecialFileErrorqZUcopystatq[UWindowsErrorq\eUos]q](Upopen4q^Uexecleq_Upopen3q`USEEK_CURqaUspawnlpqbUexeclpqcUenvironqdUspawnvpqeUspawnlqfUexecvpqgUmakedirsqhUlinesepqiUP_WAITqjUspawnvqkUspawnveqlUexecvpeqmUunsetenvqnUSEEK_SETqoUgetenvqpUpopen2qqUwalkqrUspawnleqsUexeclqtUnamequUSEEK_ENDqvUspawnlpeqwU	P_NOWAITOqxUP_NOWAITqyU
+removedirsqzUrenamesq{Uspawnvpeq|Uexeclpeq}eU	trec_eval]q~(hUplotPrecisionRecallCurveqeu.

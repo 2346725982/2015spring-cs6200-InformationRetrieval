@@ -5,7 +5,7 @@ import math
 from datetime import datetime
 from elasticsearch import Elasticsearch
 
-INDEX_NAME = "ap_dataset"
+INDEX_NAME = "ap_dataset2"
 
 es = Elasticsearch()
 
@@ -52,4 +52,4 @@ def index(id_num, docno, content) :
 
 if __name__ == '__main__' :
 	
-	read_folder("/Users/Ken/Desktop/AP_DATA/ap89_collection/")
+	read_folder("/Users/Ken/Desktop/6200/AP_DATA/ap89_collection/")
